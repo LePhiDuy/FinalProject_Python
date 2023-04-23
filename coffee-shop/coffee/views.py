@@ -1,6 +1,6 @@
 from .forms import *
 from django.shortcuts import redirect, render, HttpResponse
-from .models import Product
+from .models import Product, Category
 from django.contrib.auth import login, logout, authenticate
 
 
@@ -8,8 +8,19 @@ from django.contrib.auth import login, logout, authenticate
 
 
 def home(request):
+    selected_category = request.GET.get('category')
+    categories = Category.objects.all()
     products = Product.objects.all()
-    context = {'products': products}
+
+    if selected_category:
+        products = products.filter(category_id=selected_category)
+
+    context = {
+        'categories': categories,
+        'products': products,
+        'selected_category': int(selected_category) if selected_category else None
+    }
+
     return render(request, 'index.html', context)
 
 

@@ -1,11 +1,65 @@
 {% extends 'links.html' %}
 {% load static%}
+{% load humanize %}
 {% block content %}
-<h1>Products</h1>
-<ul>
-    {% for product in products %}
-    <li>{{ product.name }} - {{ product.price }}</li>
-    {% endfor %}
-</ul>
+<link rel="stylesheet" href="{% static 'css/HomePage.css' %}">
+
+<div class="jumbotron" style="padding: 20px">
+    <h1 class="display-4-bold">Chào mừng đến với Tiệm cà phê Nửa Đêm!</h1>
+    <p class="lead">Chúng tôi cung cấp nhiều loại hạt cà phê cao cấp và hỗn hợp để bạn lựa chọn. Hãy lướt xemn các sản
+        phẩm của chúng tôi, lựa chọn và đặt hàng trực tuyến ngay hôm nay!</p>
+</div>
+
+<div style="background-color: #D2B48C; padding: 20px">
+    <h1 class="text-center">Các sản phẩm của chúng tôi</h1>
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <form method="GET">
+                <div class="input-group">
+                    <select class="form-select" name="category">
+                        <option value="">All Categories</option>
+                        {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category.id == selected_category %}selected{% endif %}>
+                            {{ category.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center" style="padding-bottom: 20px">
+        Tổng cộng có: {{ products|length }} sản phẩm.
+    </div>
+    <div class="row justify-content-center">
+        {% for product in products %}
+        {% if forloop.counter0|divisibleby:3 and forloop.counter0 > 0 %}
+    </div>
+
+    <div class="row justify-content-center">
+        {% endif %}
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div style="display: flex; justify-content: center; height: 300px;">
+                    <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }} "
+                         style="object-fit: cover; width: 300px; height: 300px;">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.price|add:23000|floatformat:0|intcomma }} VNĐ</p>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-primary add-to-cart" data-product-id="{{ product.id }}">Add
+                            to
+                            Cart
+                        </button>
+                        <a href="" class="btn btn-secondary">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
