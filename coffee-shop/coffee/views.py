@@ -1,20 +1,33 @@
 from .forms import *
-from django.shortcuts import redirect, render, HttpResponse
-from .models import Product
-from django.contrib.auth import login,logout,authenticate
+from django.shortcuts import redirect, render, HttpResponse, get_object_or_404
+from .models import Product, Category
+from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 # Create your views here.
 
 
 def home(request):
-    product = Product.objects.all()
-    return render(request, 'index.html', {'product': product})
+    selected_category = request.GET.get('category')
+    categories = Category.objects.all()
+    products = Product.objects.all()
+
+    if selected_category:
+        products = products.filter(category_id=selected_category)
+
+    context = {
+        'categories': categories,
+        'products': products,
+        'selected_category': int(selected_category) if selected_category else None
+    }
+
+    return render(request, 'index.html', context)
+
+
 def registerPage(request):
     if request.user.is_authenticated:
         return redirect('home') 
     else: 
         form=createuserform()
-        print(form)
         if request.method=='POST':
             form=createuserform(request.POST)
             pass1=request.POST['password1']
@@ -29,10 +42,12 @@ def registerPage(request):
                 user=form.save()
                 messages.success(request, "Registration successful, please log in",'success')
                 return redirect('login')
-        context={
-            'form':form,
+        context = {
+            'form': form,
         }
-        return render(request,'register.html',context)
+        return render(request, 'register.html', context)
+
+
 def loginPage(request):
     if request.user.is_authenticated:
         return redirect('/')
@@ -50,3 +65,7 @@ def loginPage(request):
 def logoutPage(request):
     logout(request)
     return redirect('/')
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    return render(request, 'product_detail.html', {'product': product})

@@ -8,3 +8,4 @@ class CoffeeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, CoffeeAdmin)
+admin.site.register(Category)
