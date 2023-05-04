@@ -13,3 +13,4 @@ class Product(models.Model):
     quantity = models.IntegerField()
     category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.CharField(max_length=2048)
+    description = models.TextField(default='')
