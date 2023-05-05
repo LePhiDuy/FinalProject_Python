@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'coffee.apps.CoffeeConfig',
     'django.contrib.humanize',
-    'category'
+    'category.apps.CategoryConfig'
 ]
 
 MIDDLEWARE = [
@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'category.context_processors.menu_links',
             ],
         },
     },
@@ -124,17 +125,20 @@ USE_TZ = True
 # # Static files (CSS, JavaScript, Images)
 # # https://docs.djangoproject.com/en/1.9/howto/static-files/
 # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR/'static'
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR/'static'
 
 # Extra places for collectstatic to find static files.
 # STATICFILES_DIRS = (
 #     os.path.join(PROJECT_ROOT, 'static'),
 # )
 
-STATICFILES_DIRS = (
-    'CoffeeShop/static',
-)
+# STATICFILES_DIRS = [
+#     BASE_DIR/'static'
+# ]
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR/'static']
 
 # media files config
 
