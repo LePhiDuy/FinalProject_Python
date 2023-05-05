@@ -7,23 +7,10 @@ from django.contrib import messages
 
 
 def home(request):
-    # selected_category = request.GET.get('category')
-    # categories = Category.objects.all()
     products = Product.objects.all()
-
-    # if selected_category:
-    #     products = products.filter(category_id=selected_category)
-
-    # context = {
-    #     'categories': categories,
-    #     'products': products,
-    #     'selected_category': int(selected_category) if selected_category else None
-    # }
-
     context = {
         'products': products,
     }
-
     return render(request, 'index.html', context)
 
 

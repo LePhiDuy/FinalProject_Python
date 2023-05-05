@@ -4,8 +4,7 @@ from .models import Product, Category
 
 
 class CoffeeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'quantity')
-
+    list_display = ('name', 'slug', 'price', 'quantity')
+    prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(Product, CoffeeAdmin)
-admin.site.register(Category)
