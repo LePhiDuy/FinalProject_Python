@@ -24,5 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('products/', include('coffee.urls')),
+    path('login/', views.loginPage, name='login'),
+    path('register/', views.registerPage, name='register'),
+    path('logout/', views.logoutPage, name='logout')
+
     # path('categories/', include('category.urls'))
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

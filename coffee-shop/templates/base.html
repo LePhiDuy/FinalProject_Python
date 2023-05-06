@@ -37,22 +37,6 @@
     // jquery ready start
     $(document).ready(function () {
 
-        // Sự kiện click vào nút tăng số lượng
-        $(document).on('click', '.qtybutton.inc', function () {
-          var input = $(this).siblings('.cart-plus-minus-box');
-          var currentValue = parseInt(input.val());
-          input.val(currentValue + 1);
-        });
-
-        // Sự kiện click vào nút giảm số lượng
-        $(document).on('click', '.qtybutton.dec', function () {
-          var input = $(this).siblings('.cart-plus-minus-box');
-          var currentValue = parseInt(input.val());
-          if (currentValue > 1) {
-            input.val(currentValue - 1);
-          }
-        });
-
       });
 // jquery end
   </script>
