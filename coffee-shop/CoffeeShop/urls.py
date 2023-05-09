@@ -26,7 +26,7 @@ urlpatterns = [
     path('products/', include('coffee.urls')),
     path('login/', views.loginPage, name='login'),
     path('register/', views.registerPage, name='register'),
-    path('logout/', views.logoutPage, name='logout')
-
+    path('logout/', views.logoutPage, name='logout'),
+    path('cart/', include('cart.urls')),
     # path('categories/', include('category.urls'))
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

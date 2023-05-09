@@ -31,9 +31,9 @@
                 <div class="card card-product-grid">
                     <a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.image.url }}"> </a>
                     <figcaption class="info-wrap">
-                        <a href="./product-detail.html" class="title">{{ product.name }}</a>
+                        <a href="{{ product.get_url }}" class="title">{{ product.name }}</a>
                         <div class="price mt-1">{{ product.price|add:23000|floatformat:0|intcomma }} VNĐ</div> <!-- price-wrap.// -->
-                        <a href="#" class="btn btn-block btn-primary">Add to cart </span> <i class="fas fa-shopping-cart"></i> </a>
+                        <button data-product="{{product.id}}" data-action="add" class="btn btn-block btn-primary update-cart">Add to cart </span> <i class="fas fa-shopping-cart"></i> </button>
                     </figcaption>
                 </div>
             </div> <!-- col.// -->
