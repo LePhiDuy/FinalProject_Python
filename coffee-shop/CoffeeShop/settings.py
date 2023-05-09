@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'coffee.apps.CoffeeConfig',
     'django.contrib.humanize',
-    'category.apps.CategoryConfig'
+    'category.apps.CategoryConfig',
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
