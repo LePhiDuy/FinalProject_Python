@@ -1,4 +1,8 @@
-{% extends 'base.html' %} {% load static%} {% block content %}
+{% extends 'base.html' %} 
+{% load static%} 
+{% load humanize %}
+
+{% block content %}
 <section class="section-content padding-y bg">
   <div class="container">
     <!-- ============================ COMPONENT 1 ================================= -->
@@ -21,7 +25,7 @@
 
             <div class="mb-3">
               <var class="price h4"
-                >{{ product.price|add:23000|floatformat:0 }} VNĐ</var
+                >{{ product.price|intcomma }} VNĐ</var
               >
             </div>
 

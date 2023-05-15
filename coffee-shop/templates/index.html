@@ -20,7 +20,7 @@
     <div class="container">
 
         <header class="section-heading">
-            <a href="./store.html" class="btn btn-outline-primary float-right">Xem tất cả</a>
+            <a href="/products" class="btn btn-outline-primary float-right">Xem tất cả</a>
             <h3 class="section-title">Sản phẩm nổi bật</h3>
         </header><!-- sect-heading -->
 
@@ -32,7 +32,7 @@
                     <a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.image.url }}"> </a>
                     <figcaption class="info-wrap">
                         <a href="{{ product.get_url }}" class="title">{{ product.name }}</a>
-                        <div class="price mt-1">{{ product.price|add:23000|floatformat:0|intcomma }} VNĐ</div> <!-- price-wrap.// -->
+                        <div class="price mt-1">{{ product.price|intcomma }} VNĐ</div> <!-- price-wrap.// -->
                         <button data-product="{{product.id}}" data-action="add" class="btn btn-block btn-primary update-cart">Thêm vào giỏ hàng </span> <i class="fas fa-shopping-cart"></i> </button>
                     </figcaption>
                 </div>
