@@ -23,7 +23,7 @@
             </table>
         </div>
 <br>
-        <div class="box-element">
+        <div class="box-element" style="min-height: 60vh;">
             <div class="cart-row">
                 <div style="flex: 2;"><strong>Image</strong></div>
                 <div style="flex: 2;"><strong>Item</strong></div>
@@ -31,20 +31,25 @@
                 <div style="flex: 1;"><strong>Quantity</strong></div>
                 <div style="flex: 1;"><strong>Total</strong></div>
             </div>
-        {% for item in items %}
-            <div class="cart-row">
-                <div style="flex: 2;"><img class="row-image" src="{{item.product.image.url}}" alt=""></div>
-                <div style="flex: 2;">{{item.product.name}}</div>
-                <div style="flex: 1;">{{item.product.price |floatformat:0|intcomma}} VND</div>
-                <div style="flex: 1; display: flex; align-items: center;">
-                <p class="quantity" style="margin: 0;">{{item.quantity}}</p>
-                <div class="quantity">
-                    <img data-product="{{item.product.id}}" data-action="add" src="{% static 'images/increase.png' %}" class="chg-quantity update-cart" alt="">
-                    <img data-product="{{item.product.id}}" data-action="remove" src="{% static 'images/decrease.png' %}" class="chg-quantity update-cart" alt="">
+            {% if order.get_cart_items == 0 %}
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%;" >
+                    Giỏ hàng của bạn đang trống
                 </div>
+            {% endif %}
+            {% for item in items %}
+                <div class="cart-row">
+                    <div style="flex: 2;"><img class="row-image" src="{{item.product.image.url}}" alt=""></div>
+                    <div style="flex: 2;">{{item.product.name}}</div>
+                    <div style="flex: 1;">{{item.product.price |floatformat:0|intcomma}} VND</div>
+                    <div style="flex: 1; display: flex; align-items: center;">
+                    <p class="quantity" style="margin: 0;">{{item.quantity}}</p>
+                    <div class="quantity">
+                        <img data-product="{{item.product.id}}" data-action="add" src="{% static 'images/increase.png' %}" class="chg-quantity update-cart" alt="">
+                        <img data-product="{{item.product.id}}" data-action="remove" src="{% static 'images/decrease.png' %}" class="chg-quantity update-cart" alt="">
+                    </div>
+                    </div>
+                    <div style="flex: 1;">{{item.get_total |floatformat:0|intcomma}} VND</div>
                 </div>
-                <div style="flex: 1;">{{item.get_total |floatformat:0|intcomma}} VND</div>
-            </div>
             {% endfor %}
         </div>
     </div>
