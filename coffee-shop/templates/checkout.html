@@ -7,9 +7,9 @@
 <div class="container-fluid row">
     <div class="col-lg-12">
         <div class="box-element">
-            <a class="btn btn-outline-dark" href="/cart/">&#x2190; Back to Cart</a>
+            <a class="btn btn-outline-dark" href="/cart/">&#x2190; Quay lại giỏ hàng</a>
             <hr>
-            <h3>Order Summary</h3>
+            <h3>Tóm tắt đơn hàng</h3>
             <hr>
             {% for item in items %}
             <div class="cart-row">
@@ -34,30 +34,30 @@
             <form method="POST"> {% csrf_token %}
                 <div id="shipping-info">
                     <hr>
-                    <h4>Checkout Details:</h4>
+                    <h4>Thông tin thanh toán:</h4>
                     <hr>
                     <div class="">
-                        <input class="form-control" type="text" name="address" placeholder="Address.." required>
+                        <input class="form-control" type="text" name="address" placeholder="Địa chỉ.." required>
                     </div>
                     <div style="display: flex; gap: 12px; margin-top: 16px;">
                         <div style="flex: auto;">
-                            <input class="form-control" type="text" name="city" placeholder="City.." required>
+                            <input class="form-control" type="text" name="city" placeholder="Thành phố.." required>
                         </div>
                         <div style="flex: auto;">
-                            <input class="form-control" type="text" name="phone_number" placeholder="Phone Number.." required>
+                            <input class="form-control" type="text" name="phone_number" placeholder="Số điện thoại.." required>
                         </div>
                     </div>
                     <div class="mt-3">
                         <select name="payment" id="payment" class="form-control mt-3">
                             <option value="Cash On Delivery">Cash On Delivery</option>
-                            <option value="Credit Card">Credit Card</option>
+                            <option value="Credit Card">Thẻ tín dụng</option>
                             <option value="Paytm">Paytm</option>
                             <option value="Google Pay">Google Pay</option>
                         </select>
                     </div>
                 </div>
                 <hr>
-                <input type="submit" value="Place Order" id="form-button" class="btn btn-success">
+                <input type="submit" value="Đặt hàng" id="form-button" class="btn btn-success">
             </form>
 
         </div>

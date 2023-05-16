@@ -15,8 +15,9 @@ def cart(request):
         cart = json.loads(request.COOKIES['cart'])
     except:
         cart = {}
+    alerts = 'False'
     if not(request.user.is_authenticated):
-        alerts = 'Trues'
+        alerts = 'True'
     return render(request, "cart.html", {'items':items, 'order':order, 'cartItems':cartItems,'alert':alerts})
 
 def checkout(request):
