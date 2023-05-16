@@ -9,56 +9,56 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+              <h2 class="text-uppercase text-center mb-5">Đăng ký tài khoản</h2>
               {% for message in messages  %}            
               <div class="alert alert-danger" role="alert">
-                    <strong>Error : </strong> {{ message }}
+                    <strong>Lỗi : </strong> {{ message }}
                     </button>
                   </div>
               {% endfor %}   
-
               <form class="container mt-4" method="POST">
                 {% csrf_token %}
             
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <label>First Name</label>
-                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter First Name" required>
+                        <label>Họ</label>
+                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Nhập họ của bạn" required>
                     </div>
                     <div class="form-group col-md-6">
-                      <label>Last Name</label>
-                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter First Name" required>
+                      <label>Tên</label>
+                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Nhập tên của bạn" required>
                   </div>
                 </div>
             
                 <div class="row mt-4">
                     <div class="form-group col-md-6">
                         <label>Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email Id" required>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Nhập email" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Contact Number</label>
-                        <input type="tel" class="form-control" name="phone_number" id="phone_number" placeholder="Enter Contact Number" required>
+                        <label>Số điện thoại</label>
+                        <input type="tel" class="form-control" name="phone_number" id="phone_number" placeholder="Nhập số điện thoại" required>
                     </div>
                 </div>
             
                 <div class="row mt-4">
                     <div class="form-group col-md-12">
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username" required>
+                        <label>Tên tài khoản</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Nhập tên tài khoản" required>
                     </div>
                 </div>
                 
                 <div class="row mt-4">
                     <div class="form-group col-md-6">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="password1" id="password1" placeholder="Enter Password" required>
+                        <label>Mật khẩu</label>
+                        <input type="password" class="form-control" name="password1" id="password1" placeholder="Nhập tên mật khẩu" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Confirm Password</label>
-                        <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirm Password" required>
+                        <label>Xác nhận mật khẩu</label>
+                        <input type="password" class="form-control" name="password2" id="password2" placeholder="Xác nhận mật khẩu" required>
                     </div>
                 </div>
+
                 <div class="d-flex align-items-center justify-content-center">
                     <button type="submit" class="btn btn-primary">
                       Submit
@@ -66,6 +66,7 @@
                 </div>
               
                 <!-- <input type="submit" value="Submit" class="btn btn-primary" style=""> -->
+
             </form>
             </div>
           </div>

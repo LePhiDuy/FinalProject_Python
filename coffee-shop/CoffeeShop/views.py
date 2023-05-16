@@ -7,8 +7,9 @@ from django.contrib import messages
 from .forms import createuserform
 from cart.inherit import cartData
 from django.contrib.auth.models import User
+
 def home(request):
-    products = Product.objects.all()
+    products = Product.objects.all()[:8]
     data = cartData(request)
     cartItems = data['cartItems']
     context = {
@@ -21,31 +22,6 @@ def registerPage(request):
     if request.user.is_authenticated:
         return redirect('home') 
     else: 
-        # form=createuserform()
-        # if request.method=='POST':
-        #     print(0)
-        #     form=createuserform(request.POST)
-        #     pass1=request.POST['password1']
-        #     pass2=request.POST['password2']
-        #     error = 0
-        #     if pass1 != pass2:
-        #         error += 1
-        #         messages.error(request, "Passwords do not match",'danger')
-        #         return redirect('register')
-            
-        #     if form.is_valid() :
-        #         print(1)
-        #         user=form.save()
-        #         print(2)
-        #         messages.success(request, "Registration successful, please log in",'success')
-        #         return redirect('login')
-        #     else:
-        #         print(3)
-        #         messages.error(request, "Invalid username or password",'danger')
-        #         return redirect('register')
-        # context = {
-        #     'form': form,
-        # }
         if request.method=="POST":   
             username = request.POST['username']
             first_name=request.POST['first_name']
