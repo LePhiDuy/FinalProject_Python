@@ -32,7 +32,7 @@
                     <a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.image.url }}"> </a>
                     <figcaption class="info-wrap">
                         <a href="{{ product.get_url }}" class="title">{{ product.name }}</a>
-                        <div class="price mt-1">{{ product.price|intcomma }} VNĐ</div> <!-- price-wrap.// -->
+                        <div class="price mt-1">{{ product.price|floatformat:0|intcomma }} VNĐ</div> <!-- price-wrap.// -->
                         <button data-product="{{product.id}}" data-action="add" class="btn btn-block btn-primary update-cart">Thêm vào giỏ hàng </span> <i class="fas fa-shopping-cart"></i> </button>
                     </figcaption>
                 </div>

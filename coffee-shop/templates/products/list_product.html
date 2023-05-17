@@ -6,12 +6,16 @@
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
     <div class="container">
-        {% if 'search' in request.path %}
-            <h2 class="title-page">Kết quả tìm kiếm</h2>
-        {% else %}
-            <h2 class="title-page">Sản phẩm</h2>
-        {% endif %}
-    </div> <!-- container //  -->
+        <div class="row">
+            <div class="col-md-12">
+                {% if 'search' in request.path %}
+                <h2 class="title-page">Kết quả tìm kiếm</h2>
+                {% else %}
+                <h2 class="title-page">Danh sách sản phẩm</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
 
@@ -26,6 +30,14 @@
                     <div class="form-inline">
                         <span class="mr-md-auto">Có <b>{{ product_count }}</b> sản phẩm </span>
 
+                        <form method="GET" action="" class="form-inline">
+                            <label class="mr-2" for="sort" style="font-weight: bold;">Sắp xếp theo:</label>
+                            <select name="sort" id="sort" class="form-control" onchange="this.form.submit()">
+                                <option value="">Mặc định</option>
+                                <option value="price_asc" {% if sort_option == 'price_asc' %}selected{% endif %}>Giá tăng dần</option>
+                                <option value="price_desc" {% if sort_option == 'price_desc' %}selected{% endif %}>Giá giảm dần</option>
+                            </select>
+                        </form>
                     </div>
                 </header><!-- sect-heading -->
 
@@ -43,10 +55,10 @@
                                 <div class="fix-height">
                                     <a href="{{ product.get_url }}" class="title">{{ product.name }}</a>
                                     <div class="price-wrap mt-2">
-                                        <span class="price">{{ product.price|intcomma }} VNĐ</span>
+                                        <span class="price">{{ product.price|floatformat:0|intcomma }} VNĐ</span>
                                     </div> <!-- price-wrap.// -->
                                 </div>
-                                <a href="#" class="btn btn-block btn-success">Thêm vào giỏ hàng <i class="fas fa-shopping-cart"></i> </a>
+                                <a href="#" class="btn btn-block btn-success update-cart">Thêm vào giỏ hàng <i class="fas fa-shopping-cart"></i> </a>
                             </figcaption>
                         </figure>
                     </div> <!-- col.// -->
