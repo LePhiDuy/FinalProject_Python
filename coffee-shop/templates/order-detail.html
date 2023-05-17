@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Checkout {% endblock %}
+{% block css %}
+{% endblock %}
+{% block content %}
+
+<section class="h-100 h-custom" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card border-top border-bottom border-3" style="border-color: #f37a27 !important;">
+            <div class="card-body p-5">
+  
+              <p class="lead fw-bold mb-5" style="color: #f37a27;">Biên lai mua hàng</p>
+  
+              <div class="row">
+                <div class="col mb-3">
+                  <p class="small text-muted mb-1">Ngày</p>
+                  <p>{{order.date_ordered.date}}</p>
+                </div>
+                <div class="col mb-3">
+                  <p class="small text-muted mb-1">Order No.</p>
+                  <p>{{order.id}}</p>
+                </div>
+              </div>
+  
+              <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;">
+                {% for item in items %}
+                <div class="row">
+                  <div class="col-md-8 col-lg-8">
+                    <p>{{item.product.name}}</p>
+                  </div>
+                  <div class="col-md-5 col-lg-4">
+                    <p>{{item.product.price|floatformat:0}} x {{item.quantity}} VND</p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+  
+              <div class="row my-4">
+                <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
+                  <p class="lead fw-bold mb-0" style="color: #f37a27;">{{order.get_cart_total|floatformat:0}} VND</p>
+                </div>
+              </div>
+  
+              <p class="lead fw-bold mb-4 pb-2" style="color: #f37a27;">Theo dõi đơn hàng</p>
+  
+              <div class="row">
+                <div class="col-lg-12">
+  
+                  <div class="horizontal-timeline">
+  
+                    <ul class="list-inline items d-flex justify-content-between">
+                      <li class="list-inline-item items-list">
+                        <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">Đặt hàng</p
+                          class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">
+                      </li>
+                      <li class="list-inline-item items-list">
+                        <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">Vận chuyển</p
+                          class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">
+                      </li>
+                      <li class="list-inline-item items-list">
+                        <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">Đang vận chuyển
+                        </p>
+                      </li>
+                      <li class="list-inline-item items-list text-end" style="margin-right: 8px;">
+                        <p style="margin-right: -8px;">Đã giao hàng</p>
+                      </li>
+                    </ul>
+  
+                  </div>
+  
+                </div>
+              </div>
+  
+              <p class="mt-4 pt-2 mb-0">Bạn cần hỗ trợ? <a href="#!" style="color: #f37a27;">Hãy liên hệ chúng tôi</a></p>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
