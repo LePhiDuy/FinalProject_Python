@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'category.apps.CategoryConfig',
     'cart.apps.CartConfig',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
