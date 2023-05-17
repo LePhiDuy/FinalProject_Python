@@ -72,7 +72,7 @@ def updateItem(request):
 
     if orderItem.quantity <= 0:
         orderItem.delete()
-    return JsonResponse('Item was added', safe=False)
+    return JsonResponse(order.get_cart_items, safe=False)
 
 def orderDetail(request,order_id):
     if request.user.is_authenticated:
