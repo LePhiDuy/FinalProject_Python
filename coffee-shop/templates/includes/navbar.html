@@ -29,7 +29,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-2 col-md-3 col-6">
                     <a href="{% url 'home' %}" class="brand-wrap">
-                        <img class="logo" src="{% static 'images/logo-shop.png' %}">
+                        <img class="logo" src="{% static 'images/logo-shop.png' %}" style="max-height: 65px;">
                     </a> <!-- brand-wrap.// -->
                 </div>
                 <div class="col-lg col-sm col-md col-6 flex-grow-0">
@@ -63,7 +63,7 @@
                             <small class="title text-muted">Xin chào quý khách!</small>
                             <div>
                                 {% if request.user.is_active %}
-                                <span class="greet">Hello, {{request.user}}</span> <span class="dark-transp"> | </span>
+                                <span class="greet">{{request.user}}</span> <span class="dark-transp"> | </span>
                                 <span><a class="greet" href="{% url 'logout' %}">Đăng xuất</a></span>
                                 {% else %}
                                 <a href="{% url 'login' %}">Đăng nhập</a> <span class="dark-transp"> | </span>

@@ -12,23 +12,27 @@ def list_product(request, category_slug = None):
     products = None
     data = cartData(request)
     cartItems = data['cartItems']
+    sort_option = request.GET.get('sort')
     if category_slug != None:
         category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category)
-        paginator = Paginator(products, 6)
-        page = request.GET.get('page')
-        page_products = paginator.get_page(page)
-        product_count = products.count()
     else:
         products = Product.objects.all()
-        paginator = Paginator(products, 6)
-        page = request.GET.get('page')
-        page_products = paginator.get_page(page)
-        product_count = products.count()
+
+    if sort_option == 'price_asc':
+        products = products.order_by('price')
+    elif sort_option == 'price_desc':
+        products = products.order_by('-price')
+    
+    paginator = Paginator(products, 8)
+    page = request.GET.get('page')
+    page_products = paginator.get_page(page)
+    product_count = products.count()
     context = {
         'products': page_products,
         'product_count': product_count,
         'cartItems': cartItems,
+        'sort_option': sort_option,
     }
     return render(request, 'products/list_product.html', context)
 

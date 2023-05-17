@@ -55,6 +55,9 @@
       media="only screen and (max-width: 1200px)"
     />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <!-- custom javascript -->
     <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
 
@@ -133,7 +136,7 @@ for (var i = 0; i < updateBtns.length; i++) {
     var action = this.dataset.action;
     if (user == "AnonymousUser") {
       // addCookieItem(productID, action,quantity);
-      alert("Vui long dang nhap")
+      window.location.href = '/login/';
     } else {
       updateUserOrder(productID, action,quantity);
     }
@@ -177,9 +180,24 @@ function updateUserOrder(productID, action, quantity = 1) {
     })
 
     .then((data) => {
+      showSuccessToast();
       location.reload();
     });
 }
+
+  function showSuccessToast() {
+    Toastify({
+      text: "Thêm vào giỏ hàng thành công",
+      duration: 2000,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "#4CAF50",
+      className: "toastify-left-to-right",
+      stopOnFocus: true,
+      close: true,
+    }).showToast();
+    
+  }
     </script>
   </body>
 </html>

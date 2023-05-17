@@ -49,6 +49,7 @@ def checkout(request):
         cartItems = data['cartItems']
         alert = True
         return render(request, "cart.html", {'items':items, 'order':order, 'cartItems':cartItems,'alert':alert})
+    
 def updateItem(request):
     data = json.loads(request.body)
     productID = data['productID']
@@ -72,6 +73,7 @@ def updateItem(request):
     if orderItem.quantity <= 0:
         orderItem.delete()
     return JsonResponse('Item was added', safe=False)
+
 def orderDetail(request,order_id):
     if request.user.is_authenticated:
         data = cartData(request)

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %} Checkout {% endblock %}
 {% block css %}
 {% endblock %}
@@ -32,7 +33,7 @@
                     <p>{{item.product.name}}</p>
                   </div>
                   <div class="col-md-5 col-lg-4">
-                    <p>{{item.product.price|floatformat:0}} x {{item.quantity}} VND</p>
+                    <p>{{item.product.price|floatformat:0|intcomma}} x {{item.quantity}} VNĐ</p>
                   </div>
                 </div>
                 {% endfor %}
@@ -40,7 +41,7 @@
   
               <div class="row my-4">
                 <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
-                  <p class="lead fw-bold mb-0" style="color: #f37a27;">{{order.get_cart_total|floatformat:0}} VND</p>
+                  <p class="lead fw-bold mb-0" style="color: #f37a27;">{{order.get_cart_total|floatformat:0|intcomma}} VNĐ</p>
                 </div>
               </div>
   

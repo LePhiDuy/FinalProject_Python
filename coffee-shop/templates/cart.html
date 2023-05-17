@@ -48,15 +48,14 @@
                         <img data-product="{{item.product.id}}" data-action="remove" src="{% static 'images/decrease.png' %}" class="chg-quantity update-cart" alt="">
                     </div>
                     </div>
-                    <div style="flex: 1;">{{item.get_total |floatformat:0|intcomma}} VND</div>
+                    <div style="flex: 1;">{{item.get_total |floatformat:0|intcomma}} VNĐ</div>
                 </div>
             {% endfor %}
         </div>
     </div>
     <script>
-         if ("{{alert}}" === "True"){
-            alert("Vui long dang nhap")
-            window.location.href = '/login/'
+        if ("{{alert}}" === "True") {
+            window.location.href = '/login/';
         }
     </script>
 </div>
