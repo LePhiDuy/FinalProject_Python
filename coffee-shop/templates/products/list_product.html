@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12">
                 {% if 'search' in request.path %}
-                <h2 class="title-page">Kết quả tìm kiếm</h2>
+                <h2 class="title-page">Kết quả tìm kiếm cho: {{keyword}} </h2>
                 {% else %}
                 <h2 class="title-page">Danh sách sản phẩm</h2>
                 {% endif %}
@@ -58,7 +58,7 @@
                                         <span class="price">{{ product.price|floatformat:0|intcomma }} VNĐ</span>
                                     </div> <!-- price-wrap.// -->
                                 </div>
-                                <a href="#" class="btn btn-block btn-success update-cart">Thêm vào giỏ hàng <i class="fas fa-shopping-cart"></i> </a>
+                                <a href="#" class="btn btn-block btn-primary update-cart">Thêm vào giỏ hàng <i class="fas fa-shopping-cart"></i> </a>
                             </figcaption>
                         </figure>
                     </div> <!-- col.// -->
