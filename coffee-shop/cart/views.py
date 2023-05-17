@@ -3,7 +3,7 @@ import json
 from django.http import JsonResponse
 from coffee.models import Product
 from cart.inherit import cartData
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from cart.models import *
 # Create your views here.
 def cart(request):
@@ -39,7 +39,8 @@ def checkout(request):
             order.save()
             id = order.id  
             alert = True
-            return render(request, "checkout.html", {'alerts':alert, 'id':id})
+            # return render(request, "checkout.html", {'alerts':alert, 'id':id})
+            return redirect('order-detail', order_id=id)
         return render(request, "checkout.html", {'items':items, 'order':order, 'cartItems':cartItems, 'alert':False})
     else:
         data = cartData(request)
@@ -71,3 +72,13 @@ def updateItem(request):
     if orderItem.quantity <= 0:
         orderItem.delete()
     return JsonResponse('Item was added', safe=False)
+def orderDetail(request,order_id):
+    if request.user.is_authenticated:
+        data = cartData(request)
+        cartItems = data['cartItems']
+        customer = request.user.customer
+        order = Order.objects.filter(customer=customer, complete=True, id=order_id)
+        items = OrderItem.objects.filter(order=order[0])
+        return render(request, "order-detail.html", {'items':items, 'order':order[0], 'cartItems':cartItems, 'alert':False})
+    else:
+        return render(request, "order.html")
