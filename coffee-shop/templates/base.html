@@ -181,7 +181,8 @@ function updateUserOrder(productID, action, quantity = 1) {
 
     .then((data) => {
       showSuccessToast();
-      location.reload();
+      var cartQuantity = document.getElementsByClassName("cart-quantity");
+      cartQuantity[0].innerHTML = data;
     });
 }
 
